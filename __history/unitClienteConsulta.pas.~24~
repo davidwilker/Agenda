@@ -1,0 +1,121 @@
+unit unitClienteConsulta;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Vcl.Grids, Vcl.DBGrids,
+  Vcl.StdCtrls, Vcl.Buttons, Vcl.ExtCtrls, classe.clientes;
+
+type
+  TformClienteConsulta = class(TForm)
+    Panel1: TPanel;
+    Label2: TLabel;
+    lblEngeAgenda: TLabel;
+    Panel5: TPanel;
+    Panel6: TPanel;
+    btSelecionar: TSpeedButton;
+    Panel7: TPanel;
+    btCancelar: TSpeedButton;
+    Panel2: TPanel;
+    editPesquisa: TEdit;
+    dbgPesquisaClientes: TDBGrid;
+    Panel3: TPanel;
+    btNovoCliente: TSpeedButton;
+    dsPesquisaCliente: TDataSource;
+    procedure btCancelarClick(Sender: TObject);
+    procedure btNovoClienteClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure editPesquisaKeyDown(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
+    procedure dbgPesquisaClientesDblClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    Cliente : TCliente;
+    { Public declarations }
+  end;
+
+var
+  formClienteConsulta: TformClienteConsulta;
+
+implementation
+
+{$R *.dfm}
+
+uses unitClienteCadastro, unitDM, uFormat;
+
+procedure TformClienteConsulta.btCancelarClick(Sender: TObject);
+begin
+  Close;
+end;
+
+procedure TformClienteConsulta.btNovoClienteClick(Sender: TObject);
+begin
+
+  try
+    formClienteCadastro := TFormClienteCadastro.Create( Self );
+
+    dsPesquisaCliente.DataSet := nil;
+
+    formClienteCadastro.ShowModal;
+
+
+  finally
+    formClienteCadastro.Destroy;
+  end;
+
+end;
+
+procedure TformClienteConsulta.dbgPesquisaClientesDblClick(Sender: TObject);
+begin
+  if (not dbgPesquisaClientes.DataSource.DataSet.IsEmpty) then
+  begin
+
+    Cliente.ID_CLIENTE := dbgPesquisaClientes.DataSource.DataSet.FieldByName('ID_CLIENTE').AsInteger;
+
+
+
+
+    try
+      formClienteCadastro := TFormClienteCadastro.Create( Self );
+
+      formClienteCadastro.editNomeCliente.Text        := dbgPesquisaClientes.DataSource.DataSet.FieldByName('DS_NOME').AsString;
+      formClienteCadastro.editCpfCliente.Text         := dbgPesquisaClientes.DataSource.DataSet.FieldByName('NR_CPF').AsString;
+      formClienteCadastro.editRg.Text                 := dbgPesquisaClientes.DataSource.DataSet.FieldByName('DT_NASCIMENTO').AsString;
+      formClienteCadastro.editCepCliente.Text         := dbgPesquisaClientes.DataSource.DataSet.FieldByName('DS_ENDERECO').AsString;
+      formClienteCadastro.editComplementoCliente.Text := dbgPesquisaClientes.DataSource.DataSet.FieldByName('DS_COMPLEMENTO').AsString;
+      formClienteCadastro.editNumeroCliente.Text      := dbgPesquisaClientes.DataSource.DataSet.FieldByName('NR_NUMERO').AsString;
+      formClienteCadastro.editBairroCliente.Text      := dbgPesquisaClientes.DataSource.DataSet.FieldByName('DS_BAIRRO').AsString;
+      formClienteCadastro.editCidadeCliente.Text      := dbgPesquisaClientes.DataSource.DataSet.FieldByName('DS_CIDADE').AsString;
+      formClienteCadastro.editUfcliente.Text          := dbgPesquisaClientes.DataSource.DataSet.FieldByName('DS_UF').AsString;
+      formClienteCadastro.editCelularCliente.Text     := dbgPesquisaClientes.DataSource.DataSet.FieldByName('NR_TELEFONE').AsString;
+      formClienteCadastro.editTelefoneCliente.Text    := dbgPesquisaClientes.DataSource.DataSet.FieldByName('NR_TELEFONE2').AsString;
+      formClienteCadastro.editObservacoesCliente.Text := dbgPesquisaClientes.DataSource.DataSet.FieldByName('DS_OBS').AsString;
+
+      dsPesquisaCliente.DataSet := nil;
+
+      formClienteCadastro.ShowModal;
+
+    finally
+      formClienteCadastro.Destroy;
+    end;
+  end;
+
+end;
+
+procedure TformClienteConsulta.editPesquisaKeyDown(Sender: TObject;
+  var Key: Word; Shift: TShiftState);
+begin
+  if Key = VK_RETURN then
+  begin
+    dsPesquisaCliente.DataSet := Cliente.fncConsulta(editPesquisa.Text);
+  end;
+end;
+
+procedure TformClienteConsulta.FormCreate(Sender: TObject);
+begin
+  Cliente := TCliente.Create(DM.FDConnection);
+end;
+
+end.

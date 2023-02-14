@@ -1,0 +1,247 @@
+object formClienteConsulta: TformClienteConsulta
+  Left = 0
+  Top = 0
+  BorderStyle = bsNone
+  ClientHeight = 595
+  ClientWidth = 676
+  Color = 16053492
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -13
+  Font.Name = 'Segoe UI'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poScreenCenter
+  OnCreate = FormCreate
+  PixelsPerInch = 96
+  TextHeight = 17
+  object Panel1: TPanel
+    Left = 0
+    Top = 0
+    Width = 676
+    Height = 595
+    Align = alClient
+    BevelOuter = bvNone
+    TabOrder = 0
+    DesignSize = (
+      676
+      595)
+    object Label2: TLabel
+      Left = 21
+      Top = 96
+      Width = 177
+      Height = 15
+      Caption = 'Digite o NOME ou CPF do Cliente'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 12615680
+      Font.Height = -12
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+    end
+    object lblEngeAgenda: TLabel
+      Left = 21
+      Top = 36
+      Width = 158
+      Height = 21
+      Anchors = [akLeft, akTop, akRight]
+      Caption = 'CONSULTA CLIENTES'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 12615680
+      Font.Height = -16
+      Font.Name = 'Segoe UI'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object Panel5: TPanel
+      Left = 188
+      Top = 541
+      Width = 297
+      Height = 41
+      BevelOuter = bvNone
+      TabOrder = 1
+      object Panel6: TPanel
+        Left = -38
+        Top = 0
+        Width = 180
+        Height = 41
+        BevelOuter = bvNone
+        Color = 16757783
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clInactiveBorder
+        Font.Height = -13
+        Font.Name = 'Segoe UI'
+        Font.Style = []
+        ParentBackground = False
+        ParentFont = False
+        TabOrder = 0
+        object btSelecionar: TSpeedButton
+          Tag = 5
+          Left = 38
+          Top = -1
+          Width = 141
+          Height = 44
+          Cursor = crHandPoint
+          Caption = 'Selecionar'
+          Flat = True
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWhite
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Style = [fsBold]
+          ParentFont = False
+        end
+      end
+      object Panel7: TPanel
+        Left = 153
+        Top = 0
+        Width = 145
+        Height = 41
+        BevelOuter = bvNone
+        Color = 6711039
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clInactiveBorder
+        Font.Height = -13
+        Font.Name = 'Segoe UI'
+        Font.Style = []
+        ParentBackground = False
+        ParentFont = False
+        TabOrder = 1
+        object btCancelar: TSpeedButton
+          Left = 2
+          Top = -1
+          Width = 141
+          Height = 44
+          Cursor = crHandPoint
+          Caption = 'Cancelar'
+          Flat = True
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clWhite
+          Font.Height = -13
+          Font.Name = 'Segoe UI'
+          Font.Style = [fsBold]
+          ParentFont = False
+          OnClick = btCancelarClick
+        end
+      end
+    end
+    object Panel2: TPanel
+      Left = 16
+      Top = 71
+      Width = 650
+      Height = 1
+      Anchors = [akLeft, akTop, akRight]
+      TabOrder = 2
+    end
+    object editPesquisa: TEdit
+      Tag = 5
+      Left = 16
+      Top = 117
+      Width = 506
+      Height = 28
+      Hint = 'Nome Profissional'
+      CharCase = ecUpperCase
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -15
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 0
+      OnKeyDown = editPesquisaKeyDown
+    end
+    object dbgPesquisaClientes: TDBGrid
+      Left = 16
+      Top = 172
+      Width = 650
+      Height = 362
+      DataSource = dsPesquisaCliente
+      Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
+      TabOrder = 3
+      TitleFont.Charset = DEFAULT_CHARSET
+      TitleFont.Color = clWindowText
+      TitleFont.Height = -13
+      TitleFont.Name = 'Segoe UI'
+      TitleFont.Style = []
+      Columns = <
+        item
+          Expanded = False
+          FieldName = 'id_cliente'
+          Title.Caption = 'Cod.'
+          Title.Font.Charset = DEFAULT_CHARSET
+          Title.Font.Color = clWindowText
+          Title.Font.Height = -13
+          Title.Font.Name = 'Segoe UI'
+          Title.Font.Style = [fsBold]
+          Width = 42
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'ds_nome'
+          ReadOnly = True
+          Title.Caption = 'Nome'
+          Title.Font.Charset = DEFAULT_CHARSET
+          Title.Font.Color = clWindowText
+          Title.Font.Height = -13
+          Title.Font.Name = 'Segoe UI'
+          Title.Font.Style = [fsBold]
+          Width = 398
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'nr_cpf'
+          ReadOnly = True
+          Title.Caption = 'CPF'
+          Title.Font.Charset = DEFAULT_CHARSET
+          Title.Font.Color = clWindowText
+          Title.Font.Height = -13
+          Title.Font.Name = 'Segoe UI'
+          Title.Font.Style = [fsBold]
+          Width = 184
+          Visible = True
+        end>
+    end
+    object Panel3: TPanel
+      Left = 535
+      Top = 117
+      Width = 131
+      Height = 28
+      BevelOuter = bvNone
+      Color = 16757783
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clInactiveBorder
+      Font.Height = -13
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentBackground = False
+      ParentFont = False
+      TabOrder = 4
+      object btNovoCliente: TSpeedButton
+        Tag = 5
+        Left = 0
+        Top = 0
+        Width = 131
+        Height = 28
+        Cursor = crHandPoint
+        Align = alClient
+        Caption = 'Novo Cliente'
+        Flat = True
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWhite
+        Font.Height = -13
+        Font.Name = 'Segoe UI'
+        Font.Style = [fsBold]
+        ParentFont = False
+        OnClick = btNovoClienteClick
+        ExplicitTop = -1
+        ExplicitWidth = 121
+      end
+    end
+  end
+  object dsPesquisaCliente: TDataSource
+    Left = 288
+    Top = 296
+  end
+end

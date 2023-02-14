@@ -1,0 +1,330 @@
+object formLogin: TformLogin
+  Left = 0
+  Top = 0
+  Align = alClient
+  BorderStyle = bsNone
+  ClientHeight = 653
+  ClientWidth = 999
+  Color = clBackground
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -13
+  Font.Name = 'Segoe UI'
+  Font.Style = []
+  OldCreateOrder = False
+  OnActivate = FormActivate
+  PixelsPerInch = 96
+  TextHeight = 17
+  object pnlFundo: TPanel
+    Left = 112
+    Top = 48
+    Width = 729
+    Height = 585
+    BevelOuter = bvNone
+    Color = clWhite
+    ParentBackground = False
+    TabOrder = 0
+    DesignSize = (
+      729
+      585)
+    object Label2: TLabel
+      Left = 414
+      Top = 96
+      Width = 223
+      Height = 25
+      Caption = 'Digite seu Login e Senha:'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = 5778209
+      Font.Height = -19
+      Font.Name = 'Segoe UI'
+      Font.Style = [fsBold]
+      ParentFont = False
+    end
+    object brEncerrar: TSpeedButton
+      Left = 706
+      Top = 0
+      Width = 23
+      Height = 22
+      Cursor = crHandPoint
+      Anchors = [akTop, akRight]
+      Caption = 'X'
+      Flat = True
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clMedGray
+      Font.Height = -13
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentFont = False
+      OnClick = brEncerrarClick
+    end
+    object pnlLateral: TPanel
+      Left = 0
+      Top = 0
+      Width = 377
+      Height = 585
+      Align = alLeft
+      BevelOuter = bvNone
+      Color = 16250871
+      ParentBackground = False
+      TabOrder = 0
+      object Label1: TLabel
+        Left = 112
+        Top = 96
+        Width = 118
+        Height = 25
+        Caption = 'Enge Agenda'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 5778209
+        Font.Height = -19
+        Font.Name = 'Segoe UI'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+      object Label3: TLabel
+        Left = 98
+        Top = 471
+        Width = 156
+        Height = 17
+        Caption = 'Desenvolvido desde 1994'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 5778209
+        Font.Height = -13
+        Font.Name = 'Segoe UI'
+        Font.Style = [fsBold]
+        ParentFont = False
+      end
+      object Label4: TLabel
+        Left = 144
+        Top = 448
+        Width = 74
+        Height = 17
+        Caption = 'Vers'#227'o 1.0.0'
+        Color = clBlack
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 5778209
+        Font.Height = -13
+        Font.Name = 'Segoe UI'
+        Font.Style = [fsBold]
+        ParentColor = False
+        ParentFont = False
+      end
+      object imgLogo: TImage
+        Left = 40
+        Top = 152
+        Width = 289
+        Height = 259
+        Center = True
+        Picture.Data = {
+          0954506E67496D61676589504E470D0A1A0A0000000D49484452000001200000
+          0104080200000007DC7EF7000008CE4944415478DAEDDD4DA8E7531CC7F1FF9D
+          3BC663DDD2E42214D16CC4C60653521E5658B1B01A4F0B56F6964A169A282579
+          9AC49A998505254C6621250F3BC5664A57A2C9E469B8D7E25CA7A3716E877BBE
+          9FF371EEFBB5D22CE69CF99CDFDBC3E65A5ADE77C702408C250203E210181068
+          C705F6EDB143A38EFEE5D75397DDFCD0E801361D7DFD897D975F3CEAF40B6E38
+          307A001102D3595FDFB870FF7DA307D8F4F9916756F7AE8C3A9DC0A645600981
+          69ECDCC0946F9C0EF50CECC917DE38F8CA61CDA1C73F7869CFEEE505814D8CC0
+          1202D32030DDA1044660F323B084C034084C77288111D8FC082C21300D02D31D
+          4A6004363F024B084C83C07487121881CD8FC01202D32030DDA1044660F323B0
+          84C034084C77288111D8FC082C21300D02D31D4A6004363F024B084C83C07487
+          121881CD8FC01202D32030DDA1044660F323B084C034084C77288111D8FC082C
+          21300D02D31D4A6004363F024B084C83C07487121881CD8FC01202D32030DDA1
+          044660F323B084C034084C77288111D8FC082C21300D02D31D4A6004363F024B
+          084C83C07487121881CD8FC01202D32030DDA1044660F323B084C034084C7728
+          8111D8FC082C21308DAD02FBF2EDE756CE3B7BF40DA3E803DB582C9E7DEDADD1
+          7FEE4D0FDC7DCB3967EE590C0A6C3E274EFE7CD56D0F9FFEEB5B0596FF663F25
+          7D609E08AC977FFCA27668601B1B8BD51B0F6CFBB769E5BCA432B0AFDF7DFEDC
+          B3CE1CFD278EF2DF03DB39FFC61CE493370FEEDE65FA77EEEBEF7DECE4C993A3
+          6FF13FB6752604066C0B810181080C084460402002030211181088C080400406
+          0422302010810181080C084460402002030211181088C0804004060422302010
+          810181080C084460402002030211181088C0804004060422302010810181080C
+          084460402002030211181088C080400406042230201081F571CD5557DC75EB75
+          A36F61E4F03B1F7FF6E557A36F311E81F5E1FCFF591E850F63D1253007C3DFD2
+          6A0D133C4A89C0B625AFB1F6DD89D1630CB6BA7725FD85CFA33820B06DE15F98
+          339F29FC3FD1AD0273B076ECD052FDF64A3E5FD5703E53F8DCA486C05AF9BFA5
+          8CCF143E37A921B056FE6F29E33385CF4D6A08AC95FF5BCAF84CE173931A026B
+          E5FF96323E53F8DCA486C05AF9BFA58CCF143E37A921B056FE6F29E33385CF4D
+          6A08AC95FF5BCAF84CE173931A026BE5FF96323E53F8DCA486C05AF9BFA58CCF
+          143E37A921B056FE6F29E33385CF4D6A08AC95FF5BCAF84CE173931A026BE5FF
+          96323E53F8DCA486C05AF9BFA58CCF143E37A921B056FE6F29E33385CF4D6A08
+          AC95FF5BCAF84CE173931A026BE5FF96323E53F8DCA486C05AF9BFA58CCF143E
+          37A921B056FE6F29E33385CF4D6A08AC95FF5BCAF84CE173931A7EE84D2BFFB7
+          94F199C2FF1325B0563E5FD5703E53F87FA2FF8FC0363616AB371ED8F66FB32D
+          3E5FD5703E53AC7D78686969F41C7FE147676F0B6B644C51E267D3F7C11A1953
+          9408AC0FD6C898A244607DB046C6142502EB833532A62811581FAC91314589C0
+          FA608D8C294A04D6076B644C5122B03E5823638A1281F5C11A19539408AC0FD6
+          C898A244607DB046C6142502EB833532A62811581FAC91314589C0FA608D8C29
+          4A04D6076B644C5122B03E5823638A1281F5C11A19539408AC0FD6C898A24460
+          7DB046C6142502EB833532A62811581FAC91314589C0FA608D8C294A04D6076B
+          644C5122B03E5823638A1281F5C11A19539408AC0FD6C898A244607DB046C614
+          2502EB833532A62811581FAC91314589C0FA608D8C294A04D6076B644C5122B0
+          3E5823638A1281F5C11A19539408AC0FD6C898A244607DB046C614A50E813918
+          FE967C5599CF14FE9F2881B5F2F9AA86F399C2FF13DD2AB04F8F3CBD7AFECAD8
+          4BEFDAB5B4C5ED957CBEAAE17CA6C837595FDF187B93B5EF4F5C7BE7A3A7FFFA
+          568139583B762815E6F396C36F329CCF143E37A921B056FE6F29E33385CF4D6A
+          08AC95FF5BCAF84CE173931A026BE5FF96323E53F8DCA486C05AF9BFA58CCF14
+          3E37A921B056FE6F29E33385CF4D6A08AC95FF5BCAF84CE173931A026BE5FF96
+          323E53F8DCA486C05AF9BFA58CCF143E37A921B056FE6F29E33385CF4D6A08AC
+          95FF5BCAF84CE173931A026BE5FF96323E53F8DCA486C05AF9BFA58CCF143E37
+          A921B056FE6F29E33385CF4D6A08AC95FF5BCAF84CE173931A026BE5FF96323E
+          53F8DCA486C05AF9BFA58CCF143E37A921B056FE6F29E33385CF4D6A08AC95FF
+          5BCAF84CE173931A026BE5FF96323E53F8DCA4869F2AD5CAFF2D657CA6F0F944
+          FF585FBF68FFFDA7FF3A81B5F2F9AA86F399C2FF1325B056566B98E0514AFCE8
+          EC6DB17A4B137C180B7E367D2FC7DF7F71CF19BB47DFC2C86FA77EBFE4A60747
+          DF623C02030211181088C0804004060422302010810181080C08446040200203
+          0211181088C0804004060422302010810181080C084460402002030211181088
+          C0804004060422302010810181080C084460402002030211181088C080400406
+          0422302010810181080C0844604020020302111810A84360F3F9E1C79FF6DDFE
+          88EC38E725EF79F4A9F73EFA4273D6BBAF3E7EF595978EFE134721B0BF51FE63
+          D979C9275F78E3E02B8735671DFFE0A53DBB9747FF89A3FCEBC0BE39FAF2F2F2
+          AED1D796CE1184C012029BDF90FFB04C87AEAF6F5CB8FFBED1036CFAFCC833AB
+          7B57168302DB39FF554F60BA43098CC0E647600981691098EE500223B0F91158
+          42601A04A63B94C0086C7E049610980681E90E2530029B1F812504A64160BA43
+          098CC0E647600981691098EE500223B0F9115842601A04A63B94C0086C7E0496
+          10980681E90E2530029B1F812504A64160BA43098CC0E647600981691098EE50
+          0223B0F9115842601A04A63B94C0086C7E049610980681E90E2530029B1F8125
+          04A64160BA43098CC0E647600981691098EE500223B0F9115842601A04A63B94
+          C0086C7E049610980681E90E2530029B1F812504A64160BA43098CC0E6476009
+          81691098EE500223B0F9115842601A04A63B94C0086C7E39303DCFC08620B069
+          115842601A04A6F3CBAFA72EBBF9A1D1036C3AFAFA13FB2EBF78D4E90406A003
+          02030211181088C0804004060422302010810181080C08446040A03F0143A849
+          9526D8C7340000000049454E44AE426082}
+      end
+    end
+    object Panel1: TPanel
+      Left = 414
+      Top = 223
+      Width = 223
+      Height = 50
+      BevelOuter = bvNone
+      TabOrder = 1
+      object Label5: TLabel
+        Left = 0
+        Top = 0
+        Width = 223
+        Height = 17
+        Align = alTop
+        Caption = 'Login:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clMedGray
+        Font.Height = -13
+        Font.Name = 'Segoe UI'
+        Font.Style = [fsBold]
+        ParentFont = False
+        ExplicitWidth = 39
+      end
+      object editLogin: TEdit
+        Left = 0
+        Top = 23
+        Width = 223
+        Height = 26
+        Align = alBottom
+        BorderStyle = bsNone
+        CharCase = ecUpperCase
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 5778209
+        Font.Height = -16
+        Font.Name = 'Segoe UI'
+        Font.Style = [fsBold]
+        ParentFont = False
+        TabOrder = 0
+      end
+      object Panel2: TPanel
+        Left = 0
+        Top = 49
+        Width = 223
+        Height = 1
+        Align = alBottom
+        BevelOuter = bvNone
+        Color = clMedGray
+        ParentBackground = False
+        TabOrder = 1
+      end
+    end
+    object Panel3: TPanel
+      Left = 414
+      Top = 309
+      Width = 223
+      Height = 50
+      BevelOuter = bvNone
+      TabOrder = 2
+      object Label6: TLabel
+        Left = 0
+        Top = 0
+        Width = 223
+        Height = 17
+        Align = alTop
+        Caption = 'Senha:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clMedGray
+        Font.Height = -13
+        Font.Name = 'Segoe UI'
+        Font.Style = [fsBold]
+        ParentFont = False
+        ExplicitWidth = 41
+      end
+      object editSenha: TEdit
+        Left = 0
+        Top = 23
+        Width = 223
+        Height = 26
+        Align = alBottom
+        BorderStyle = bsNone
+        CharCase = ecUpperCase
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = 5778209
+        Font.Height = -16
+        Font.Name = 'Segoe UI'
+        Font.Style = [fsBold]
+        ParentFont = False
+        PasswordChar = '*'
+        TabOrder = 0
+      end
+      object Panel4: TPanel
+        Left = 0
+        Top = 49
+        Width = 223
+        Height = 1
+        Align = alBottom
+        BevelOuter = bvNone
+        Color = clMedGray
+        ParentBackground = False
+        TabOrder = 1
+      end
+    end
+    object Panel5: TPanel
+      Left = 414
+      Top = 459
+      Width = 223
+      Height = 41
+      BevelOuter = bvNone
+      Color = 5778209
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clInactiveBorder
+      Font.Height = -13
+      Font.Name = 'Segoe UI'
+      Font.Style = []
+      ParentBackground = False
+      ParentFont = False
+      TabOrder = 3
+      object btConfirmar: TSpeedButton
+        Left = 0
+        Top = 0
+        Width = 223
+        Height = 41
+        Cursor = crHandPoint
+        Align = alClient
+        Caption = 'Confirmar'
+        Flat = True
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clMedGray
+        Font.Height = -13
+        Font.Name = 'Segoe UI'
+        Font.Style = [fsBold]
+        ParentFont = False
+        OnClick = btConfirmarClick
+        ExplicitLeft = -8
+        ExplicitWidth = 161
+      end
+    end
+  end
+end

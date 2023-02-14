@@ -1,0 +1,89 @@
+unit unitMensagens;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.Buttons;
+
+type
+  TformMensagens = class(TForm)
+    pnlFundo: TPanel;
+    Shape1: TShape;
+    Panel2: TPanel;
+    lblTituloJanela: TLabel;
+    imgIcone: TImage;
+    lblTituloMsg: TLabel;
+    lblMsg: TLabel;
+    Panel5: TPanel;
+    pnlNao: TPanel;
+    btNao: TSpeedButton;
+    pnlSim: TPanel;
+    btSim: TSpeedButton;
+    procedure btNaoClick(Sender: TObject);
+    procedure btSimClick(Sender: TObject);
+    procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+    procedure FormShow(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+
+    sTituloJanela, sTituloMsg, sMsg, sCaminhoIcone, sTipo : String;
+
+    bRespostaMSG : Boolean;
+  end;
+
+var
+  formMensagens: TformMensagens;
+
+implementation
+
+{$R *.dfm}
+
+
+
+procedure TformMensagens.btNaoClick(Sender: TObject);
+begin
+  bRespostaMSG := False;
+
+  Close;
+end;
+
+procedure TformMensagens.btSimClick(Sender: TObject);
+begin
+  bRespostaMSG := True;
+
+  Close;
+end;
+
+procedure TformMensagens.FormKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+  if Key = VK_return then
+    btSimClick( Self )
+  else
+  if Key = VK_ESCAPE then
+    btNaoClick( Self );
+
+end;
+
+procedure TformMensagens.FormShow(Sender: TObject);
+begin
+   bRespostaMSG := False;
+
+   lblTituloJanela.Caption    := sTituloJanela;
+   lblTituloMsg.Caption       := sTituloMsg;
+   lblMsg.Caption             := sMsg;
+   imgIcone.Picture.LoadFromFile(sCaminhoIcone);
+
+   if STipo = 'OK' then
+   begin
+     pnlNao.Visible := False;
+     btSim.Caption  := 'OK (ENTER)';
+   end;
+
+
+end;
+
+end.

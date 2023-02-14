@@ -1,0 +1,62 @@
+unit unitLogin;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls,
+  Vcl.Imaging.pngimage, Vcl.Buttons;
+
+type
+  TformLogin = class(TForm)
+    pnlFundo: TPanel;
+    pnlLateral: TPanel;
+    Label1: TLabel;
+    Label3: TLabel;
+    Label4: TLabel;
+    imgLogo: TImage;
+    Label2: TLabel;
+    Label5: TLabel;
+    Panel1: TPanel;
+    editLogin: TEdit;
+    Panel2: TPanel;
+    Panel3: TPanel;
+    Label6: TLabel;
+    editSenha: TEdit;
+    Panel4: TPanel;
+    Panel5: TPanel;
+    btConfirmar: TSpeedButton;
+    brEncerrar: TSpeedButton;
+    procedure brEncerrarClick(Sender: TObject);
+    procedure btConfirmarClick(Sender: TObject);
+    procedure FormActivate(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  formLogin: TformLogin;
+
+implementation
+
+{$R *.dfm}
+
+procedure TformLogin.btConfirmarClick(Sender: TObject);
+begin
+  Close;
+end;
+
+procedure TformLogin.FormActivate(Sender: TObject);
+begin
+  pnlFundo.Left := Round((formLogin.Width - pnlFundo.Width)/ 2);
+  pnlFundo.Top  := Round ((formLogin.Height - pnlFundo.Height) / 2);
+end;
+
+procedure TformLogin.brEncerrarClick(Sender: TObject);
+begin
+  Application.Terminate;
+end;
+
+end.

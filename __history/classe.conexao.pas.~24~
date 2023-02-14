@@ -1,0 +1,146 @@
+unit classe.conexao;
+
+interface
+
+uses
+  FireDAC.Comp.Client, FireDAC.Stan.Intf, System.SysUtils, System.IniFiles,
+  Vcl.Forms, unitFuncoes;
+
+  type
+    TConexao = class
+      private
+
+        FServidor: String;
+        FMsgErro: String;
+        FSenha: String;
+        FBase: String;
+        FLogin: String;
+        FPorta: String;
+        FConexao: TFDConnection;
+
+
+      public
+
+        Constructor Create ( NomeConexao : TFDConnection );
+        destructor Destroy; override;
+
+        function funcConectarBancoDados : boolean;
+        function funcLerArquivoINI: boolean;
+
+        procedure procGravarArquivoINI;
+
+        property Conexao  : TFDConnection Read FConexao Write FConexao;
+        property Servidor : String Read FServidor Write FServidor;
+        property Base     : String Read FBase Write FBase;
+        property Login    : String Read FLogin Write FLogin;
+        property Senha    : String Read FSenha Write FSenha;
+        property Porta    : String Read FPorta Write FPorta;
+        property MsgErro  : String Read FMsgErro Write FMsgErro;
+
+    end;
+
+
+implementation
+
+{ TConexao }
+
+constructor TConexao.Create(NomeConexao: TFDConnection);
+begin
+  FConexao := NomeConexao;
+end;
+
+destructor TConexao.Destroy;
+begin
+  FConexao.Connected := False;
+  inherited;
+end;
+
+function TConexao.funcConectarBancoDados: boolean;
+begin
+  Result := true;
+
+  FConexao.Params.Clear;
+
+  if not funcLerArquivoINI then
+  begin
+    Result := False;
+    FMsgErro := 'O arquivo de configuração não foi encontrado';
+  end else
+  begin
+    FConexao.Params.Add('Server=' + FServidor);
+    FConexao.Params.Add('user_name=' + FLogin);
+    FConexao.Params.Add('password=' + FSenha);
+    FConexao.Params.Add('port=' + FPorta);
+    FConexao.Params.Add('Database=' + FBase);
+    FConexao.Params.Add('DriverID=' + 'FB');
+
+    try
+      FConexao.Connected := true;
+    Except
+      on e:Exception do
+      begin
+        FMsgErro := e.Message;
+        Result   := False;
+      end;
+    end;
+
+  end;
+
+
+
+end;
+
+procedure TConexao.procGravarArquivoINI;
+var
+  IniFile : String;
+  Ini     : TiniFile;
+begin
+
+  IniFile := ChangeFileExt(Application.Exename, '.ini');
+  Ini     := TIniFile.Create( Inifile );
+
+  try
+    ini.WriteString('Configuracao', 'Servidor', FServidor);
+    ini.WriteString('Configuracao', 'Base', FBase);
+    ini.WriteString('Configuracao', 'Porta', FPorta);
+    ini.WriteString('Acesso', 'Login', FLogin);
+    ini.WriteString('Acesso', 'Senha', Criptografia(FSenha, '123') );
+
+  finally
+    Ini.Free;
+  end;
+
+end;
+
+function TConexao.funcLerArquivoINI: boolean;
+var
+  IniFile : String;
+  Ini     : TiniFile;
+begin
+
+  IniFile := ChangeFileExt(Application.Exename, '.ini');
+  Ini     := TIniFile.Create( Inifile );
+
+  if not fileexists (IniFile) then
+    Result := false
+  else
+  begin
+
+    try
+      FServidor   := ini.ReadString('Configuracao', 'Servidor', '');
+      FBase       := ini.ReadString('Configuracao', 'Base', '');
+      FPorta      := ini.ReadString('Configuracao', 'Porta', '');
+      FLogin      := ini.ReadString('Acesso', 'Login','');
+
+      FSenha      := ini.ReadString('Acesso', 'Senha', '');
+      FSenha      := Criptografia(FSenha, '123');
+
+    finally
+      Result := True;
+      Ini.Free;
+    end;
+  end;
+
+end;
+
+end.

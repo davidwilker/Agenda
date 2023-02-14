@@ -1,0 +1,96 @@
+unit unitPrincipal;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Imaging.pngimage,
+  Vcl.ExtCtrls, Vcl.Buttons, unitConfigServidor;
+
+type
+  TformPrincipal = class(TForm)
+    Label1: TLabel;
+    Label2: TLabel;
+    pnlFundo: TPanel;
+    Panel2: TPanel;
+    Panel3: TPanel;
+    Panel4: TPanel;
+    Image1: TImage;
+    Image2: TImage;
+    SpeedButton1: TSpeedButton;
+    SpeedButton2: TSpeedButton;
+    Panel5: TPanel;
+    Panel6: TPanel;
+    Label4: TLabel;
+    Panel7: TPanel;
+    Panel8: TPanel;
+    Label5: TLabel;
+    Shape1: TShape;
+    SpeedButton3: TSpeedButton;
+    Panel9: TPanel;
+    Shape2: TShape;
+    SpeedButton4: TSpeedButton;
+    Panel10: TPanel;
+    Shape3: TShape;
+    SpeedButton5: TSpeedButton;
+    SpeedButton6: TSpeedButton;
+    Label6: TLabel;
+    procedure SpeedButton2Click(Sender: TObject);
+    procedure SpeedButton1Click(Sender: TObject);
+    procedure FormResize(Sender: TObject);
+    procedure SpeedButton5Click(Sender: TObject);
+    procedure SpeedButton6Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  formPrincipal: TformPrincipal;
+
+implementation
+
+{$R *.dfm}
+
+uses unitFuncoes;
+
+procedure TformPrincipal.FormResize(Sender: TObject);
+begin
+  pnlFundo.Top   := Round (( formPrincipal.Height - pnlFundo.Height) / 2);
+  pnlFundo.Left  := Round (( formPrincipal.Width - pnlFundo.Width) / 2);
+end;
+
+procedure TformPrincipal.SpeedButton1Click(Sender: TObject);
+begin
+  Application.Minimize;
+end;
+
+procedure TformPrincipal.SpeedButton2Click(Sender: TObject);
+begin
+  Application.Terminate;
+end;
+
+procedure TformPrincipal.SpeedButton5Click(Sender: TObject);
+begin
+
+  try
+    formConfigServidor := TformConfigServidor.Create( Self );
+    formConfigServidor.ShowModal;
+  finally
+    formConfigServidor.Free;
+  end;
+
+end;
+
+procedure TformPrincipal.SpeedButton6Click(Sender: TObject);
+begin
+
+  try
+    formAgendamento := TUnitAgendamento.Create( Self);
+  finally
+
+  end;
+end;
+
+end.

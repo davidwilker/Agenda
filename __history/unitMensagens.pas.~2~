@@ -1,0 +1,55 @@
+unit unitMensagens;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.Buttons;
+
+type
+  TformMensagens = class(TForm)
+    pnlFundo: TPanel;
+    Shape1: TShape;
+    Panel2: TPanel;
+    Label1: TLabel;
+    Image1: TImage;
+    lblTituloMsg: TLabel;
+    lbl_Msg: TLabel;
+    Panel5: TPanel;
+    Panel6: TPanel;
+    btNao: TSpeedButton;
+    Panel7: TPanel;
+    btSim: TSpeedButton;
+    procedure btNaoClick(Sender: TObject);
+    procedure btSimClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+    bRespostaMSG : Boolean;
+  end;
+
+var
+  formMensagens: TformMensagens;
+
+implementation
+
+{$R *.dfm}
+
+
+
+procedure TformMensagens.btNaoClick(Sender: TObject);
+begin
+  bRespostaMSG := False;
+
+  Close;
+end;
+
+procedure TformMensagens.btSimClick(Sender: TObject);
+begin
+  bRespostaMSG := True;
+
+  Close;
+end;
+
+end.

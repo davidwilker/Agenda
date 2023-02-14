@@ -1,0 +1,93 @@
+unit unitPrincipal;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.Imaging.pngimage,
+  Vcl.ExtCtrls, Vcl.Buttons, unitConfigServidor, unitAgendamento;
+
+type
+  TformPrincipal = class(TForm)
+    lblEngeAgenda: TLabel;
+    lblUsuarioLogado: TLabel;
+    pnlFundo: TPanel;
+    Panel2: TPanel;
+    Panel3: TPanel;
+    pnlLogoCliente: TPanel;
+    imgiconeSuperior: TImage;
+    Image2: TImage;
+    SpeedButton1: TSpeedButton;
+    SpeedButton2: TSpeedButton;
+    Panel5: TPanel;
+    Panel6: TPanel;
+    Label4: TLabel;
+    pnlAgendamento: TPanel;
+    pnlUsuario: TPanel;
+    lblAgendamento: TLabel;
+    Shape1: TShape;
+    btUsuario: TSpeedButton;
+    pnlRelarotio: TPanel;
+    Shape2: TShape;
+    btRelatorio: TSpeedButton;
+    pnlServidor: TPanel;
+    Shape3: TShape;
+    btServidor: TSpeedButton;
+    btAgendamento: TSpeedButton;
+    Label6: TLabel;
+    procedure SpeedButton2Click(Sender: TObject);
+    procedure SpeedButton1Click(Sender: TObject);
+    procedure FormResize(Sender: TObject);
+    procedure btServidorClick(Sender: TObject);
+    procedure btAgendamentoClick(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  formPrincipal: TformPrincipal;
+
+implementation
+
+{$R *.dfm}
+
+uses unitFuncoes;
+
+procedure TformPrincipal.FormResize(Sender: TObject);
+begin
+  pnlFundo.Top   := Round (( formPrincipal.Height - pnlFundo.Height) / 2);
+  pnlFundo.Left  := Round (( formPrincipal.Width - pnlFundo.Width) / 2);
+end;
+
+procedure TformPrincipal.SpeedButton1Click(Sender: TObject);
+begin
+  Application.Minimize;
+end;
+
+procedure TformPrincipal.SpeedButton2Click(Sender: TObject);
+begin
+  Application.Terminate;
+end;
+
+procedure TformPrincipal.btServidorClick(Sender: TObject);
+begin
+
+  try
+    formConfigServidor := TformConfigServidor.Create( Self );
+    formConfigServidor.ShowModal;
+  finally
+    formConfigServidor.Free;
+  end;
+
+end;
+
+procedure TformPrincipal.btAgendamentoClick(Sender: TObject);
+begin
+  formAgendamento := TformAgendamento.Create( Self );
+  formAgendamento.Parent := pnlLogoCliente;
+  formAgendamento.Show;
+end;
+
+end.
